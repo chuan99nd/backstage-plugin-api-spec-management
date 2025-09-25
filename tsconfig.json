@@ -1,0 +1,6 @@
+{
+    "extends": "@backstage/cli/config/tsconfig.json",
+    "include": ["plugins"],
+    "exclude": ["node_modules", "dist"]
+  }
+  
