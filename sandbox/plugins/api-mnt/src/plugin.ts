@@ -16,7 +16,7 @@ export const ApiMntPage = apiMntPlugin.provide(
   createRoutableExtension({
     name: 'ApiMntPage',
     component: () =>
-      import('./components/ExampleComponent').then(m => m.ExampleComponent),
+      import('./components/DashboardComponent').then(m => m.DashboardComponent),
     mountPoint: rootRouteRef,
   }),
 );
