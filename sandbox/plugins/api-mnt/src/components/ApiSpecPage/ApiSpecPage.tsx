@@ -1,9 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import '@stoplight/elements/styles.min.css';
 import '@stoplight/elements/web-components.min.js';
-import { API } from '@stoplight/elements';
-import { Header, HeaderActionMenu, HeaderIconLinkRow, HeaderLabel, HeaderTabs, Page, Select } from '@backstage/core-components';
-import logo from '../../../public/logo.png'; 
+import { Header, HeaderLabel, Page, Select } from '@backstage/core-components';
 
 export const ApiSpecPage = () => {
   const container = useRef<HTMLDivElement>(null);
