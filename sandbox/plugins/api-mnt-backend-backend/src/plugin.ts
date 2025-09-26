@@ -18,15 +18,15 @@ export const apiMntBackendPlugin = createBackendPlugin({
       deps: {
         httpAuth: coreServices.httpAuth,
         httpRouter: coreServices.httpRouter,
-        todoList: todoListServiceRef,
-        apiMnt: apiMntServiceRef
+        apiMnt: apiMntServiceRef,
+        database: coreServices.database
       },
-      async init({ httpAuth, httpRouter, todoList,apiMnt }) {
+      async init({ httpAuth, httpRouter, apiMnt, database }) {
         httpRouter.use(
           await createRouter({
             httpAuth,
-            todoList,
-            apiMnt,
+            apiMnt, 
+            database
           }),
         );
       },

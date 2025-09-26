@@ -7,7 +7,7 @@
     "plugins/*/config.d.ts",
     "plugins/*/dev",
     "plugins/*/migrations"
-  ],
+, "plugins/api-mnt-backend-backend/migrations"  ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "dist-types",

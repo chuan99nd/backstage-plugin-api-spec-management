@@ -4,8 +4,9 @@ import {
     createServiceRef,
     LoggerService,
   } from '@backstage/backend-plugin-api';
-  import { catalogServiceRef } from '@backstage/plugin-catalog-node';
-  import { Expand } from '@backstage/types';
+import { NotFoundError } from '@backstage/errors';
+import { catalogServiceRef } from '@backstage/plugin-catalog-node';
+import { Expand } from '@backstage/types';
 
 export class ApiMntService {
     readonly #logger: LoggerService;
@@ -29,6 +30,21 @@ export class ApiMntService {
     async healthcheck(): Promise<{ status: string }> {
         return { status: 'ok' };
     }
+
+    async putVersion(): Promise<{ status: string }> {
+        return { status: 'ok' };
+    }
+
+    async putFile(file:Express.Multer.File, input: {
+        serviceName: string;
+        version: string;
+        description: string;
+        releaseTime: string;
+        gitlabSourceUrl: string;
+    } ): Promise<{ status: string }> {
+        return { status: 'ok' };
+    }
+    
 } 
 
 export const apiMntServiceRef = createServiceRef<Expand<ApiMntService>>({
