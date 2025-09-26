@@ -30,7 +30,9 @@
   "dependencies": {
     "@backstage/core-components": "^0.18.0",
     "@backstage/core-plugin-api": "^1.11.0",
-    "@emotion/styled": "^11.14.1"
+    "@emotion/styled": "^11.14.1",
+    "@stoplight/elements": "^9.0.6",
+    "@stoplight/elements-dev-portal": "^3.0.7"
   },
   "devDependencies": {
     "@backstage/cli": "^0.34.2",

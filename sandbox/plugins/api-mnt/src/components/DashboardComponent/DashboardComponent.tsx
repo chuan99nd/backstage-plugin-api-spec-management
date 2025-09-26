@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import {  Header,  Page,  Content,  HeaderLabel} from '@backstage/core-components';
+import { useNavigate } from 'react-router-dom';
+import {  Header,  Page,  Content,  HeaderLabel, GitHubIcon, DocsIcon} from '@backstage/core-components';
 import {
   Box,
   TextField,
@@ -12,10 +13,11 @@ import {
   Paper,
   TablePagination,
   CircularProgress,
-  // Tooltip,
-  // IconButton,
+  Tooltip,
+  IconButton,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
+
 import axios from 'axios';
 
 // Gradient header
@@ -37,10 +39,12 @@ interface Service {
 const PAGE_SIZE = 10;
 
 export const DashboardComponent = () => {
+
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(0);
+  const navigate = useNavigate();
 
   // Fetch all services once
   useEffect(() => {
@@ -87,7 +91,7 @@ export const DashboardComponent = () => {
   };
 
   return (
-    <Page themeId="tool">
+    <Page themeId="apis">
         <Header title="Welcome to api spec centralize management!" 
           subtitle="Easily view, manage, and track all your API versions in one place">
             <HeaderLabel label="Owner" value="Platform team" />
@@ -116,7 +120,7 @@ export const DashboardComponent = () => {
                     <TableCell><strong>Service Name</strong></TableCell>
                     <TableCell><strong>Latest Version</strong></TableCell>
                     <TableCell><strong>Description</strong></TableCell>
-                    {/* <TableCell><strong>Actions</strong></TableCell> */}
+                    <TableCell><strong>Actions</strong></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -125,12 +129,13 @@ export const DashboardComponent = () => {
                       <TableCell>{s.name}</TableCell>
                       <TableCell>{s.latestVersion}</TableCell>
                       <TableCell>{s.description}</TableCell>
-                      {/* <TableCell>
+                      <TableCell>
                         <Tooltip title="Go to GitLab">
                           <IconButton
                             component="a"
-                            href={"https://google.com"}
-                            target="_blank"
+                            onClick={() => {
+                              navigate(`/apis/${s.name}`);
+                            }}
                             sx={{ color: '#fc6d26' }}
                           >
                             <GitHubIcon />
@@ -138,15 +143,17 @@ export const DashboardComponent = () => {
                         </Tooltip>
 
                         <Tooltip title="View API Spec">
-                          <IconButton
+                        <IconButton
                             component="a"
-                            href={"https://google.com"}
-                            target="_blank"
-                            sx={{ color: '#1976d2' }}
+                            onClick={() => {
+                              navigate(`/api-spec`);
+                            }}
+                            sx={{ color: '#fc6d26' }}
                           >
+                            <DocsIcon />
                           </IconButton>
                         </Tooltip>
-                    </TableCell> */}
+                    </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

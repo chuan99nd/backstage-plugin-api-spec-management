@@ -1,1 +1,1 @@
-export { apiMntPlugin, ApiMntPage } from './plugin';
+export { apiMntPlugin, ApiMntPage, ApiSpecPage, apiSpectPlugin } from './plugin';
